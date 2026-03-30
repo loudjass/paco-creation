@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paco-Creations | Artisanat Fait Main</title>
+  <meta name="description" content="Découvrez les créations artisanales de Paco : sacs en crochet, poupées, bonnets et accessoires uniques faits avec amour.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-container">
+      <a href="#" class="logo">Paco-Creations</a>
+      <div class="nav-links">
+        <a href="#propos">À Propos</a>
+        <a href="#creations">Nos Créations</a>
+        <a href="#commander">Commander</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content reveal">
+      <h1>L'art du fait main</h1>
+      <p>Des créations uniques en crochet, tissées avec passion pour embellir votre quotidien.</p>
+      <a href="#creations" class="cta-btn">Voir la Collection</a>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="propos" class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <h2>Bonjour, je suis Paco</h2>
+          <p>Passionné par les matières et les couleurs, je crée des objets qui racontent une histoire. Chaque pièce est unique, réalisée entièrement à la main dans mon petit atelier.</p>
+          <p>Du sac élégant à la peluche réconfortante, mon univers est doux, coloré et profondément artisanal.</p>
+        </div>
+        <div class="about-image reveal" style="text-align: center;">
+          <img src="public/images/paco-1.jpg" alt="Paco au travail" style="max-width: 100%; border-radius: 20px; box-shadow: 20px 20px 0 var(--color-rose-poudre);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="creations" class="gallery-section">
+    <div class="container">
+      <h2 class="reveal">Nos Créations</h2>
+      <div class="gallery-grid">
+        <!-- Card 1: Sac Gradient -->
+        <div class="card reveal">
+          <img src="public/images/paco-1.jpg" alt="Sac en crochet gradient rose et violet">
+          <div class="card-info">
+            <h3 class="card-title">Sac "Aurore"</h3>
+            <p class="card-desc">Un sac spacieux aux nuances de rose et de violet, parfait pour les journées ensoleillées.</p>
+          </div>
+        </div>
+        <!-- Card 2: Poupée Fleurie -->
+        <div class="card reveal">
+          <img src="public/images/paco-1.jpg" alt="Poupée crochet robe violette">
+          <div class="card-info">
+            <h3 class="card-title">Poupée "Lilas"</h3>
+            <h4 style="font-size: 0.8rem; color: var(--color-terracotta);">Personnage Unique</h4>
+            <p class="card-desc">Une poupée artisanale avec sa robe violette et sa coiffe fleurie. Un cadeau magique.</p>
+          </div>
+        </div>
+        <!-- Card 3: Bonnet et Chats -->
+        <div class="card reveal">
+          <img src="public/images/paco-2.jpg" alt="Bonnet rose et chats en crochet">
+          <div class="card-info">
+            <h3 class="card-title">Accessoires Douceur</h3>
+            <p class="card-desc">Bonnets colorés et petits compagnons à quatre pattes pour petits et grands.</p>
+          </div>
+        </div>
+        <!-- Card 4: Sac Franges -->
+        <div class="card reveal">
+          <img src="public/images/paco-1.jpg" alt="Sac blanc à franges et anses violettes">
+          <div class="card-info">
+            <h3 class="card-title">Sac "Bohème"</h3>
+            <p class="card-desc">Élégance et caractère avec ce sac blanc texturé aux finitions violettes audacieuses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Order -->
+  <section id="commander" class="steps">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 50px;" class="reveal">Comment commander ?</h2>
+      <div class="steps-grid">
+        <div class="step-item reveal">
+          <div class="step-number">01</div>
+          <h3>Choisissez</h3>
+          <p>Parcourez la galerie et repérez le style qui vous plaît.</p>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-number">02</div>
+          <h3>Contactez-moi</h3>
+          <p>Envoyez-moi un message via le formulaire ci-dessous avec votre projet.</p>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-number">03</div>
+          <h3>Création</h3>
+          <p>Nous validons ensemble les couleurs et je lance la confection !</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="reveal">Me Contacter</h2>
+      <div class="contact-form reveal">
+        <form id="paco-form">
+          <div class="form-group">
+            <label for="name">Votre Nom</label>
+            <input type="text" id="name" name="name" placeholder="Ex: Jean Dupont" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Votre Email</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Votre Message / Votre Projet</label>
+            <textarea id="message" name="message" placeholder="Dites-moi ce qui vous ferait plaisir..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Envoyer ma demande</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Paco-Creations</div>
+        <p>Fait main avec passion en France.</p>
+        <div class="social-links">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Etsy</a>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2026 Paco-Creations. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
