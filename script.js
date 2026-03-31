@@ -343,5 +343,20 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.padding = '0';
             nav.style.backgroundColor = 'rgba(255, 252, 243, 0.85)';
         }
+        
+        // Hide/Show Header on scroll for mobile
+        if (window.innerWidth <= 768) {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 150) {
+                // Scrolling down
+                nav.classList.add('nav-hidden');
+            } else {
+                // Scrolling up
+                nav.classList.remove('nav-hidden');
+            }
+            lastScrollY = currentScrollY;
+        }
     });
+
+    let lastScrollY = window.scrollY;
 });
