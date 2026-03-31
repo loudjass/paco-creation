@@ -292,21 +292,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- Form Submission (Mailto) --- */
     const contactForm = document.getElementById('paco-form');
+    const sendEmailBtn = document.getElementById('send-email');
+    const sendWhatsappBtn = document.getElementById('send-whatsapp');
     
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+    if (sendEmailBtn) {
+        sendEmailBtn.onclick = (e) => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
             
-            const subject = encodeURIComponent(`Demande de création de la part de ${name}`);
-            const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nProjet:\n${message}`);
+            if (!name || !email || !message) {
+                alert("Merci de remplir tous les champs avant l'envoi.");
+                return;
+            }
+            
+            const subject = encodeURIComponent(`Demande Paco Créations - ${name}`);
+            const body = encodeURIComponent(`Bonjour,\n\nJe souhaite me renseigner sur une création vue sur votre site.\n\nNom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
             
             window.location.href = `mailto:pja60@live.fr?subject=${subject}&body=${body}`;
-            alert("Votre message a bien été préparé ! Votre application de messagerie va s'ouvrir pour l'envoyer.");
-            contactForm.reset();
-        });
+        };
+    }
+
+    if (sendWhatsappBtn) {
+        sendWhatsappBtn.onclick = (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !message) {
+                alert("Merci de remplir au moins votre nom et votre message pour WhatsApp.");
+                return;
+            }
+            
+            const text = encodeURIComponent(`Bonjour, je souhaite me renseigner sur une création vue sur votre site.\n\nJe suis ${name}. Ma demande : ${message}`);
+            window.open(`https://wa.me/33607877159?text=${text}`, '_blank');
+        };
     }
 
     /* --- Smooth Scrolling --- */
