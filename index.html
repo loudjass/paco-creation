@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paco-Creations | Artisanat Fait Main</title>
-  <meta name="description" content="Découvrez les créations artisanales de Paco : sacs en crochet, poupées, bonnets et accessoires uniques faits avec amour.">
-  
+  <meta name="description"
+    content="Découvrez les créations artisanales de Paco : sacs en crochet, poupées, bonnets et accessoires uniques faits avec amour.">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- Navigation -->
   <nav>
     <div class="container nav-container">
-      <a href="#" class="logo">Paco-Creations</a>
+      <a href="#" class="logo">Paco <span>Créations</span></a>
       <div class="nav-links">
         <a href="#propos">À Propos</a>
-        <a href="#creations">Nos Créations</a>
+        <a href="#vedette">Coups de Cœur</a>
+        <a href="#creations">La Boutique</a>
         <a href="#commander">Commander</a>
         <a href="#contact">Contact</a>
       </div>
-      <button class="mobile-menu-btn">☰</button>
+      <button class="mobile-menu-btn"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content reveal">
-      <h1>L'art du fait main</h1>
-      <p>Des créations uniques en crochet, tissées avec passion pour embellir votre quotidien.</p>
-      <a href="#creations" class="cta-btn">Voir la Collection</a>
+      <span class="hero-subtitle">Créations douces & artisanales</span>
+      <h1>L'art de <span>crocheter</span> le bonheur</h1>
+      <p>Bienvenue dans mon petit atelier où chaque fil devient une histoire, chaque maille un cadeau fait avec amour.</p>
+      <div class="hero-btns">
+        <a href="#creations" class="cta-btn">Découvrir mes créations</a>
+        <a href="#vedette" class="btn-secondary">Voir le coup de cœur</a>
+      </div>
     </div>
   </header>
 
@@ -42,13 +51,63 @@
   <section id="propos" class="about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-text reveal">
-          <h2>Bonjour, je suis Paco</h2>
-          <p>Passionné par les matières et les couleurs, je crée des objets qui racontent une histoire. Chaque pièce est unique, réalisée entièrement à la main dans mon petit atelier.</p>
-          <p>Du sac élégant à la peluche réconfortante, mon univers est doux, coloré et profondément artisanal.</p>
+        <div class="about-image reveal">
+          <div class="image-wrapper">
+            <img src="public/images/collection-creations-paco.jpg.jpg" alt="Atmosphère Paco Créations">
+          </div>
         </div>
-        <div class="about-image reveal" style="text-align: center;">
-          <img src="public/images/paco-1.jpg" alt="Paco au travail" style="max-width: 100%; border-radius: 20px; box-shadow: 20px 20px 0 var(--color-rose-poudre);">
+        <div class="about-text reveal">
+          <span class="section-tag">Un peu de moi</span>
+          <h2>Passion & Douceur</h2>
+          <p>Chaque création qui sort de mes mains est pensée pour être unique. J'aime travailler les teintes tendres et les matières qui durent, pour créer des objets qui ont une âme.</p>
+          <p>Du sac bohème à la peluche qui accompagne les nuits des plus petits, mon univers est une invitation à la tendresse et au plaisir des choses simples du fait-main.</p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <strong>100%</strong>
+              <span>Artisanal</span>
+            </div>
+            <div class="stat-item">
+              <strong>Unique</strong>
+              <span>Fait pour vous</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Product -->
+  <section id="vedette" class="featured-product">
+    <div class="container">
+      <div class="featured-grid">
+        <div class="featured-content reveal">
+          <span class="product-sku">PB001</span>
+          <span class="section-tag">Coup de Cœur</span>
+          <h2>L'Incontournable : La Poupée Bouquet 2-en-1</h2>
+          <p class="featured-intro">Une innovation poétique qui se transforme au gré des envies. Un cadeau magique qui dure toute la vie.</p>
+          <div class="featured-features">
+            <div class="feature">
+              <span class="icon">✿</span>
+              <p>D'un côté, un magnifique bouquet éternel pour décorer la chambre.</p>
+            </div>
+            <div class="feature">
+              <span class="icon">🧸</span>
+              <p>De l'autre, une poupée douce et attachante pour les moments de tendresse.</p>
+            </div>
+          </div>
+          <a href="#commander" class="cta-btn secondary">Réserver la mienne</a>
+        </div>
+        <div class="featured-gallery reveal">
+          <div class="dual-view">
+            <div class="view-item" id="view-bouquet">
+              <img src="public/images/poupee-bouquet-2-en-1-bouquet.jpg.jpg" alt="Vue Bouquet">
+              <span>Côté Bouquet</span>
+            </div>
+            <div class="view-item" id="view-pupee">
+              <img src="public/images/poupee-bouquet-2-en-1-pupee.jpg.jpg" alt="Vue Poupée">
+              <span>Côté Poupée</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -57,64 +116,71 @@
   <!-- Gallery Section -->
   <section id="creations" class="gallery-section">
     <div class="container">
-      <h2 class="reveal">Nos Créations</h2>
-      <div class="gallery-grid">
-        <!-- Card 1: Sac Gradient -->
-        <div class="card reveal">
-          <img src="public/images/paco-1.jpg" alt="Sac en crochet gradient rose et violet">
-          <div class="card-info">
-            <h3 class="card-title">Sac "Aurore"</h3>
-            <p class="card-desc">Un sac spacieux aux nuances de rose et de violet, parfait pour les journées ensoleillées.</p>
-          </div>
-        </div>
-        <!-- Card 2: Poupée Fleurie -->
-        <div class="card reveal">
-          <img src="public/images/paco-1.jpg" alt="Poupée crochet robe violette">
-          <div class="card-info">
-            <h3 class="card-title">Poupée "Lilas"</h3>
-            <h4 style="font-size: 0.8rem; color: var(--color-terracotta);">Personnage Unique</h4>
-            <p class="card-desc">Une poupée artisanale avec sa robe violette et sa coiffe fleurie. Un cadeau magique.</p>
-          </div>
-        </div>
-        <!-- Card 3: Bonnet et Chats -->
-        <div class="card reveal">
-          <img src="public/images/paco-2.jpg" alt="Bonnet rose et chats en crochet">
-          <div class="card-info">
-            <h3 class="card-title">Accessoires Douceur</h3>
-            <p class="card-desc">Bonnets colorés et petits compagnons à quatre pattes pour petits et grands.</p>
-          </div>
-        </div>
-        <!-- Card 4: Sac Franges -->
-        <div class="card reveal">
-          <img src="public/images/paco-1.jpg" alt="Sac blanc à franges et anses violettes">
-          <div class="card-info">
-            <h3 class="card-title">Sac "Bohème"</h3>
-            <p class="card-desc">Élégance et caractère avec ce sac blanc texturé aux finitions violettes audacieuses.</p>
-          </div>
-        </div>
+      <div class="section-header reveal">
+        <span class="section-tag">La Boutique</span>
+        <h2>Nos Douces Créations</h2>
+        <p>Chaque pièce est une invitation au voyage et à la tendresse.</p>
+      </div>
+      <div class="gallery-grid" id="product-grid">
+        <!-- Products will be enhanced by JS data -->
       </div>
     </div>
   </section>
 
+  <!-- Product Modal -->
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <div class="main-image-container">
+            <img id="modal-main-image" src="" alt="">
+          </div>
+          <div class="thumbnails" id="modal-thumbnails"></div>
+        </div>
+        <div class="modal-info">
+          <span id="modal-sku" class="sku-tag"></span>
+          <span id="modal-category" class="category"></span>
+          <h2 id="modal-title"></h2>
+          <p id="modal-description" class="modal-desc"></p>
+          
+          <div class="modal-details">
+            <div id="detail-specs">
+              <!-- Material, Dimensions, etc. will appear here if available -->
+            </div>
+          </div>
+          
+          <div class="modal-footer">
+            <span id="modal-price" class="modal-price"></span>
+            <a href="https://wa.me/33607877159" id="modal-whatsapp" class="cta-btn" target="_blank">Commander cet article</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- How to Order -->
   <section id="commander" class="steps">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: 50px;" class="reveal">Comment commander ?</h2>
+      <div class="section-header reveal">
+        <span class="section-tag">Processus</span>
+        <h2>Une création sur-mesure</h2>
+      </div>
       <div class="steps-grid">
         <div class="step-item reveal">
-          <div class="step-number">01</div>
-          <h3>Choisissez</h3>
-          <p>Parcourez la galerie et repérez le style qui vous plaît.</p>
+          <div class="step-icon">01</div>
+          <h3>L'inspiration</h3>
+          <p>Explorez mes modèles et choisissez celui qui vous fait vibrer.</p>
         </div>
         <div class="step-item reveal">
-          <div class="step-number">02</div>
-          <h3>Contactez-moi</h3>
-          <p>Envoyez-moi un message via le formulaire ci-dessous avec votre projet.</p>
+          <div class="step-icon">02</div>
+          <h3>L'échange</h3>
+          <p>Discutons de vos envies (couleurs, dimensions) via le formulaire.</p>
         </div>
         <div class="step-item reveal">
-          <div class="step-number">03</div>
-          <h3>Création</h3>
-          <p>Nous validons ensemble les couleurs et je lance la confection !</p>
+          <div class="step-icon">03</div>
+          <h3>La magie</h3>
+          <p>Je crochète votre pièce unique et vous l'expédie avec soin.</p>
         </div>
       </div>
     </div>
@@ -123,23 +189,46 @@
   <!-- Contact Section -->
   <section id="contact" class="contact-section">
     <div class="container">
-      <h2 class="reveal">Me Contacter</h2>
-      <div class="contact-form reveal">
-        <form id="paco-form">
-          <div class="form-group">
-            <label for="name">Votre Nom</label>
-            <input type="text" id="name" name="name" placeholder="Ex: Jean Dupont" required>
+      <div class="contact-card reveal">
+        <div class="contact-info">
+          <h2>Parlons de votre projet</h2>
+          <p>Une personnalisation, une question ou une commande ? Je vous répondrai avec grand plaisir.</p>
+          <div class="contact-methods">
+            <div class="method">
+              <span class="method-label">Par Email</span>
+              <p><strong>pja60@live.fr</strong></p>
+            </div>
+            <div class="method">
+              <span class="method-label">Directement par WhatsApp</span>
+              <a href="https://wa.me/33607877159" class="whatsapp-btn" target="_blank">
+                <span class="wa-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.996-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.589.943 3.133 1.415 4.75 1.416 5.482.001 9.944-4.461 9.947-9.945.001-2.654-1.033-5.148-2.908-7.025-1.875-1.874-4.37-2.907-7.028-2.908-5.485 0-9.944 4.459-9.947 9.943-.001 1.742.454 3.438 1.316 4.921l-1.017 3.715 3.887-1.017zm11.366-7.327c-.328-.164-1.939-.956-2.239-1.065-.301-.11-.519-.164-.738.164-.219.328-.847 1.065-1.038 1.284-.191.218-.382.246-.71.082-.328-.164-1.386-.511-2.641-1.63-1.014-.906-1.698-2.025-1.897-2.353-.199-.328-.021-.506.143-.668.148-.146.328-.382.492-.574.164-.191.219-.328.328-.546.11-.219.055-.41-.027-.574-.082-.164-.738-1.776-1.011-2.431-.266-.641-.539-.553-.738-.563-.192-.01-.41-.012-.628-.012-.219 0-.574.082-.874.41-.3.328-1.148 1.12-1.148 2.732 0 1.612 1.175 3.168 1.339 3.387.164.219 2.312 3.53 5.598 4.949.781.337 1.391.539 1.865.69.785.25 1.498.215 2.062.13.628-.094 1.939-.792 2.213-1.557.273-.765.273-1.42.191-1.557-.081-.137-.3-.218-.628-.382z"/></svg>
+                </span>
+                Discuter sur WhatsApp
+              </a>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="email">Votre Email</label>
-            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Votre Message / Votre Projet</label>
-            <textarea id="message" name="message" placeholder="Dites-moi ce qui vous ferait plaisir..." required></textarea>
-          </div>
-          <button type="submit" class="submit-btn">Envoyer ma demande</button>
-        </form>
+        </div>
+        <div class="contact-form">
+          <form id="paco-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Votre Nom</label>
+                <input type="text" id="name" name="name" placeholder="Ex: Louise Dupont" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Votre Email</label>
+                <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Votre message</label>
+              <textarea id="message" name="message" placeholder="Dites-moi tout sur votre projet..." required></textarea>
+              <p class="form-hint">Vous pouvez indiquer la référence du modèle souhaité dans votre message.</p>
+            </div>
+            <button type="submit" class="submit-btn">Envoyer ma demande</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -164,4 +253,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
