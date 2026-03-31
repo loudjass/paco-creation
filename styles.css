@@ -746,8 +746,7 @@ footer {
   
   .featured-product {
     padding-top: 50px;
-    /* Soften the join between about (white) and featured (lilac) */
-    background: linear-gradient(to bottom, white 0%, var(--color-lilas-doux) 150px);
+    background-color: var(--color-lilas-doux);
   }
   
   .featured-grid {
