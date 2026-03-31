@@ -735,30 +735,50 @@ footer {
   .section-header h2 { font-size: 2.2rem; }
   .form-row { grid-template-columns: 1fr; }
   
-  /* Mobile 2-in-1 layout fix */
-  .featured-product .container {
-    padding-top: 60px;
-    padding-bottom: 60px;
+  /* Remove gaps and soften section transitions */
+  section {
+    padding: 60px 0;
+  }
+  
+  .about {
+    padding-bottom: 30px;
+  }
+  
+  .featured-product {
+    padding-top: 50px;
+    /* Soften the join between about (white) and featured (lilac) */
+    background: linear-gradient(to bottom, white 0%, var(--color-lilas-doux) 150px);
   }
   
   .featured-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 0;
   }
   
   .featured-content {
-    order: 1;
+    display: contents; /* Allows reordering children with siblings of featured-content */
   }
   
+  /* Hierarchy: SKU -> Title -> Intro -> GALERIE -> Features -> Button */
+  .product-sku { order: 1; }
+  .section-tag { order: 2; margin-bottom: 5px; }
+  #vedette h2 { order: 3; margin-bottom: 15px; }
+  .featured-intro { order: 4; margin-bottom: 25px; font-size: 1.2rem; }
+  
   .featured-gallery {
-    order: 2;
-    margin: 30px 0;
+    order: 5;
+    margin: 10px 0 30px;
+  }
+  
+  .featured-features {
+    order: 6;
+    margin-bottom: 30px;
   }
   
   .featured-content .cta-btn {
-    order: 3;
-    margin-top: 10px;
+    order: 7;
+    width: 100%;
   }
 
   .dual-view {
