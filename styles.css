@@ -747,6 +747,11 @@ footer {
   .featured-product {
     padding-top: 50px;
     background-color: var(--color-lilas-doux);
+    background-image: none; /* Clear the global radial gradient */
+  }
+  
+  .featured-product::before {
+    display: none; /* Remove the white overlay veil */
   }
   
   .featured-grid {
