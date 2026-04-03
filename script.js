@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    /* --- Product Data --- */
+
+    /* =============================================
+       PRODUCT DATA — Single source of truth
+       ============================================= */
     const products = [
         {
             id: 'poupee-bouquet',
@@ -16,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 dimensions: 'Environ 30cm',
                 entretien: 'Lavage délicat à la main'
             },
-            price: 'Sur demande'
+            price: 49,
+            priceLabel: '49 €'
         },
         {
             id: 'sac-franges',
@@ -25,8 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Accessoire Bohème',
             description: 'Ce sac en crochet allie la pureté du blanc à l\'élégance du lilas. Ses franges généreuses lui donnent un mouvement gracieux, parfait pour une balade estivale ou une soirée bohème.',
             images: ['public/images/sac-blanc-violet-franges.jpg.jpg'],
-            details: {},
-            price: 'Création sur demande'
+            details: {
+                matiere: 'Coton crocheté',
+                entretien: 'Lavage délicat à la main'
+            },
+            price: 42,
+            priceLabel: '42 €'
         },
         {
             id: 'peluche-lapin',
@@ -35,8 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Douceur Enfant',
             description: 'Un petit lapin au crochet d\'une douceur infinie. Avec ses longues oreilles et sa couleur rose poudré, il deviendra vite le meilleur ami des petits (et des grands).',
             images: ['public/images/peluche-lapin-rose.jpg.jpg'],
-            details: {},
-            price: 'Création sur demande'
+            details: {
+                matiere: 'Coton doux',
+                dimensions: 'Environ 22cm'
+            },
+            price: 28,
+            priceLabel: '28 €'
         },
         {
             id: 'sac-rayures',
@@ -45,8 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Mode Printanière',
             description: 'Un sac spacieux et robuste aux rayures harmonieuses. Un mélange de lilas, crème et rose qui sent bon le printemps et les journées ensoleillées.',
             images: ['public/images/sac-raye-violet-creme.jpg.jpg'],
-            details: {},
-            price: 'Création sur demande'
+            details: {
+                matiere: 'Coton crocheté'
+            },
+            price: 38,
+            priceLabel: '38 €'
         },
         {
             id: 'sac-geometrique',
@@ -55,8 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Contemporain',
             description: 'Un design moderne aux motifs géométriques jouant sur les contrastes de violet et de crème. Idéal pour un look structuré et original.',
             images: ['public/images/sac-geometrique-violet-creme.jpg.jpg'],
-            details: {},
-            price: 'Création sur demande'
+            details: {
+                matiere: 'Coton crocheté'
+            },
+            price: 36,
+            priceLabel: '36 €'
         },
         {
             id: 'panier-douceur',
@@ -65,8 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Rangement Chic',
             description: 'Un petit panier de rangement à la fois pratique et esthétique. Idéal pour organiser vos accessoires de beauté ou vos fils de coton avec une touche de couleur tendre.',
             images: ['public/images/panier-creme-rose.jpg.jpg'],
-            details: {},
-            price: 'Création sur demande'
+            details: {
+                matiere: 'Coton crocheté'
+            },
+            price: 22,
+            priceLabel: '22 €'
         },
         {
             id: 'sac-passion',
@@ -75,8 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Édition Classique',
             description: 'Le contraste classique du rouge et du blanc pour un sac qui ne passe pas inaperçu. Sa texture travaillée et ses finitions soignées en font un accessoire de caractère.',
             images: ['public/images/sac-rouge-blanc-crochet.jpg.jpg'],
-            details: {},
-            price: 'Création sur demande'
+            details: {
+                matiere: 'Coton crocheté'
+            },
+            price: 34,
+            priceLabel: '34 €'
         },
         {
             id: 'panier-printemps',
@@ -85,36 +109,278 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Féerie Florale',
             description: 'Un panier fleuri qui apporte immédiatement de la gaieté. Ses nuances de rose et ses motifs délicats en font une pièce de décoration unique pour votre intérieur.',
             images: ['public/images/panier-rose-multicolore.jpg.jpg'],
-            details: {},
-            price: 'Création sur demande'
+            details: {
+                matiere: 'Coton crocheté'
+            },
+            price: 24,
+            priceLabel: '24 €'
         }
     ];
 
-    /* --- Render Gallery --- */
+
+    /* =============================================
+       CART SYSTEM — localStorage-backed, clean API
+       ============================================= */
+    const CART_KEY = 'paco_cart';
+
+    function getCart() {
+        try {
+            return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+        } catch { return []; }
+    }
+
+    function saveCart(cart) {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        updateCartBadge();
+        renderCartDrawer();
+    }
+
+    function addToCart(productId, qty = 1) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        const cart = getCart();
+        const existing = cart.find(item => item.id === productId);
+        if (existing) {
+            existing.qty += qty;
+        } else {
+            cart.push({ id: productId, qty });
+        }
+        saveCart(cart);
+        showCartNotification(product.title);
+    }
+
+    function removeFromCart(productId) {
+        const cart = getCart().filter(item => item.id !== productId);
+        saveCart(cart);
+    }
+
+    function updateCartQty(productId, qty) {
+        const cart = getCart();
+        const item = cart.find(i => i.id === productId);
+        if (item) {
+            item.qty = Math.max(1, qty);
+        }
+        saveCart(cart);
+    }
+
+    function getCartTotal() {
+        const cart = getCart();
+        return cart.reduce((sum, item) => {
+            const product = products.find(p => p.id === item.id);
+            return sum + (product ? product.price * item.qty : 0);
+        }, 0);
+    }
+
+    function getCartItemCount() {
+        return getCart().reduce((sum, item) => sum + item.qty, 0);
+    }
+
+    /* --- Cart Badge in Nav --- */
+    function updateCartBadge() {
+        const badge = document.getElementById('cart-count');
+        const count = getCartItemCount();
+        if (badge) {
+            badge.textContent = count;
+            badge.style.display = count > 0 ? 'flex' : 'none';
+        }
+    }
+
+    /* --- Cart Notification Toast --- */
+    function showCartNotification(title) {
+        // Remove existing
+        const existing = document.querySelector('.cart-toast');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'cart-toast';
+        toast.innerHTML = `
+            <span class="cart-toast-icon">✓</span>
+            <span class="cart-toast-text"><strong>${title}</strong> ajouté au panier</span>
+        `;
+        document.body.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.add('visible'));
+        setTimeout(() => {
+            toast.classList.remove('visible');
+            setTimeout(() => toast.remove(), 400);
+        }, 2600);
+    }
+
+    /* --- Cart Drawer --- */
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartOverlay = document.getElementById('cart-overlay');
+    const cartClose = document.getElementById('cart-close');
+    const cartToggle = document.getElementById('cart-toggle');
+
+    function openCartDrawer() {
+        if (cartDrawer && cartOverlay) {
+            renderCartDrawer();
+            cartDrawer.classList.add('open');
+            cartOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeCartDrawer() {
+        if (cartDrawer && cartOverlay) {
+            cartDrawer.classList.remove('open');
+            cartOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (cartToggle) cartToggle.addEventListener('click', openCartDrawer);
+    if (cartClose) cartClose.addEventListener('click', closeCartDrawer);
+    if (cartOverlay) cartOverlay.addEventListener('click', closeCartDrawer);
+
+    function renderCartDrawer() {
+        const cartItems = document.getElementById('cart-items');
+        const cartTotalEl = document.getElementById('cart-total');
+        const cartEmpty = document.getElementById('cart-empty');
+        const cartFooter = document.querySelector('.cart-drawer-footer');
+        if (!cartItems) return;
+
+        const cart = getCart();
+        cartItems.innerHTML = '';
+
+        if (cart.length === 0) {
+            if (cartEmpty) cartEmpty.style.display = 'block';
+            if (cartFooter) cartFooter.style.display = 'none';
+            return;
+        }
+
+        if (cartEmpty) cartEmpty.style.display = 'none';
+        if (cartFooter) cartFooter.style.display = 'block';
+
+        cart.forEach(item => {
+            const product = products.find(p => p.id === item.id);
+            if (!product) return;
+
+            const el = document.createElement('div');
+            el.className = 'cart-item';
+            el.innerHTML = `
+                <img src="${product.images[0]}" alt="${product.title}" class="cart-item-img">
+                <div class="cart-item-info">
+                    <h4 class="cart-item-title">${product.title}</h4>
+                    <span class="cart-item-ref">${product.ref}</span>
+                    <div class="cart-item-bottom">
+                        <div class="cart-qty-controls">
+                            <button class="qty-btn qty-minus" data-id="${product.id}" aria-label="Réduire">−</button>
+                            <span class="qty-value">${item.qty}</span>
+                            <button class="qty-btn qty-plus" data-id="${product.id}" aria-label="Augmenter">+</button>
+                        </div>
+                        <span class="cart-item-price">${product.price * item.qty} €</span>
+                    </div>
+                </div>
+                <button class="cart-item-remove" data-id="${product.id}" aria-label="Supprimer">×</button>
+            `;
+            cartItems.appendChild(el);
+        });
+
+        // Cart total
+        if (cartTotalEl) {
+            cartTotalEl.textContent = getCartTotal() + ' €';
+        }
+
+        // Bind quantity buttons
+        cartItems.querySelectorAll('.qty-minus').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.dataset.id;
+                const cart = getCart();
+                const item = cart.find(i => i.id === id);
+                if (item && item.qty > 1) {
+                    updateCartQty(id, item.qty - 1);
+                } else {
+                    removeFromCart(id);
+                }
+            });
+        });
+
+        cartItems.querySelectorAll('.qty-plus').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.dataset.id;
+                const cart = getCart();
+                const item = cart.find(i => i.id === id);
+                if (item) updateCartQty(id, item.qty + 1);
+            });
+        });
+
+        cartItems.querySelectorAll('.cart-item-remove').forEach(btn => {
+            btn.addEventListener('click', () => {
+                removeFromCart(btn.dataset.id);
+            });
+        });
+    }
+
+    // Cart checkout button — WhatsApp with full cart summary
+    const cartCheckoutBtn = document.getElementById('cart-checkout');
+    if (cartCheckoutBtn) {
+        cartCheckoutBtn.addEventListener('click', () => {
+            const cart = getCart();
+            if (cart.length === 0) return;
+
+            let msg = 'Bonjour ! Je souhaite commander les créations suivantes :\n\n';
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.id);
+                if (product) {
+                    msg += `• ${product.title} (Réf: ${product.ref}) × ${item.qty} — ${product.price * item.qty} €\n`;
+                }
+            });
+            msg += `\nTotal : ${getCartTotal()} €\n\nMerci !`;
+            window.open(`https://wa.me/33607877159?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+    }
+
+    // Init badge on load
+    updateCartBadge();
+
+
+    /* =============================================
+       RENDER GALLERY — Product cards with Add-to-Cart
+       ============================================= */
     const productGrid = document.getElementById('product-grid');
     if (productGrid) {
-        products.forEach((product, index) => {
-            if (product.id === 'poupee-bouquet') return; // Skip featured in main gallery if desired, or keep it. Let's keep it.
+        products.forEach((product) => {
+            if (product.id === 'poupee-bouquet') return;
             
             const card = document.createElement('div');
             card.className = 'card reveal';
             card.innerHTML = `
                 <div class="card-image">
-                    <img src="${product.images[0]}" alt="${product.title}">
+                    <img src="${product.images[0]}" alt="${product.title}" loading="lazy">
                 </div>
                 <div class="card-info">
                     <span class="product-sku">${product.ref}</span>
                     <span class="category">${product.category}</span>
                     <h3 class="card-title">${product.title}</h3>
-                    <p class="card-desc">${product.description.substring(0, 100)}...</p>
+                    <p class="card-desc">${product.description.substring(0, 90)}…</p>
+                    <div class="card-footer">
+                        <span class="card-price">${product.priceLabel}</span>
+                        <button class="add-to-cart-btn" data-id="${product.id}" aria-label="Ajouter au panier">
+                            <span class="atc-icon">+</span> Ajouter
+                        </button>
+                    </div>
                 </div>
             `;
-            card.addEventListener('click', () => openModal(product));
+
+            // Click card image → open modal
+            card.querySelector('.card-image').addEventListener('click', () => openModal(product));
+            card.querySelector('.card-title').addEventListener('click', () => openModal(product));
+
+            // Add to cart button
+            card.querySelector('.add-to-cart-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                addToCart(product.id);
+            });
+
             productGrid.appendChild(card);
         });
     }
 
-    /* --- Open Featured From Views --- */
+
+    /* =============================================
+       OPEN FEATURED FROM VIEWS
+       ============================================= */
     const viewBouquet = document.getElementById('view-bouquet');
     const viewPupee = document.getElementById('view-pupee');
     
@@ -141,7 +407,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* --- Modal Logic --- */
+
+    /* =============================================
+       MODAL LOGIC — Product sheet with Add-to-Cart
+       ============================================= */
     const modal = document.getElementById('product-modal');
     const closeModalBtn = document.querySelector('.close-modal');
     
@@ -154,19 +423,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const modalDesc = document.getElementById('modal-description');
         const modalPrice = document.getElementById('modal-price');
         const modalWhatsApp = document.getElementById('modal-whatsapp');
+        const modalAddCart = document.getElementById('modal-add-cart');
         const detailSpecs = document.getElementById('detail-specs');
 
         // Set basic info
         modalTitle.textContent = product.title;
         modalCategory.textContent = product.category;
-        if (modalSku) modalSku.textContent = `Référence : ${product.ref}`;
+        if (modalSku) modalSku.textContent = `Réf. ${product.ref}`;
         modalDesc.textContent = product.description;
-        modalPrice.textContent = product.price;
+        modalPrice.textContent = product.priceLabel;
 
         // WhatsApp dynamic link
         if (modalWhatsApp) {
-            const waMessage = encodeURIComponent(`Bonjour, je souhaite commander la création ${product.title} (Réf : ${product.ref}).`);
+            const waMessage = encodeURIComponent(`Bonjour, je souhaite commander la création "${product.title}" (Réf : ${product.ref}) — ${product.priceLabel}.`);
             modalWhatsApp.href = `https://wa.me/33607877159?text=${waMessage}`;
+        }
+
+        // Add to cart button in modal
+        if (modalAddCart) {
+            modalAddCart.onclick = () => {
+                addToCart(product.id);
+            };
         }
 
         // Set main image (based on startIndex)
@@ -180,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
             product.images.forEach((imgSrc, idx) => {
                 const thumb = document.createElement('div');
                 thumb.className = `thumb ${idx === activeIdx ? 'active' : ''}`;
-                thumb.innerHTML = `<img src="${imgSrc}" alt="${product.title} view ${idx + 1}">`;
+                thumb.innerHTML = `<img src="${imgSrc}" alt="${product.title} vue ${idx + 1}">`;
                 thumb.addEventListener('click', () => {
                     modalMainImage.src = imgSrc;
                     document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
@@ -210,88 +487,88 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!hasDetails) {
-            detailSpecs.innerHTML = '<p style="font-style: italic; opacity: 0.6; font-size: 0.9rem;">Détails supplémentaires à venir...</p>';
+            detailSpecs.innerHTML = '<p style="font-style: italic; opacity: 0.6; font-size: 0.9rem;">Détails supplémentaires à venir…</p>';
         }
 
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scroll
+        document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
         modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = '';
     }
 
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+    
+    // Close on overlay click
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (modal && modal.classList.contains('active')) closeModal();
+            if (cartDrawer && cartDrawer.classList.contains('open')) closeCartDrawer();
+        }
     });
 
-    /* --- Intersection Observer for Scroll Animations --- */
-    const reveals = document.querySelectorAll('.reveal');
-    
-    const revealCallback = (entries, observer) => {
+
+    /* =============================================
+       INTERSECTION OBSERVER — Scroll Animations
+       ============================================= */
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
             }
         });
-    };
-
-    const revealObserver = new IntersectionObserver(revealCallback, {
+    }, {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -40px 0px'
     });
 
     function initReveal() {
-        document.querySelectorAll('.reveal').forEach(reveal => {
-            revealObserver.observe(reveal);
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
         });
     }
     initReveal();
 
-    /* --- Mobile Menu --- */
+
+    /* =============================================
+       MOBILE MENU — CSS-based toggle
+       ============================================= */
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     const nav = document.querySelector('nav');
 
+    function closeMobileMenu() {
+        if (navLinks && menuBtn) {
+            navLinks.classList.remove('active');
+            menuBtn.classList.remove('open');
+        }
+    }
+
     if (menuBtn && navLinks) {
         menuBtn.addEventListener('click', () => {
             const isOpen = navLinks.classList.contains('active');
-            
-            if (!isOpen) {
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
                 navLinks.classList.add('active');
                 menuBtn.classList.add('open');
-                
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '90px';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100vw';
-                navLinks.style.backgroundColor = 'rgba(255, 252, 249, 0.98)';
-                navLinks.style.padding = '40px 20px';
-                navLinks.style.textAlign = 'center';
-                navLinks.style.zIndex = '1001';
-                navLinks.style.boxShadow = '0 10px 20px rgba(58, 42, 42, 0.1)';
-                
-                menuBtn.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                menuBtn.children[1].style.opacity = '0';
-                menuBtn.children[2].style.transform = 'rotate(-45deg) translate(7px, -8px)';
-            } else {
-                navLinks.classList.remove('active');
-                menuBtn.classList.remove('open');
-                navLinks.style.display = 'none';
-                
-                menuBtn.children[0].style.transform = 'none';
-                menuBtn.children[1].style.opacity = '1';
-                menuBtn.children[2].style.transform = 'none';
             }
         });
     }
 
-    /* --- Form Submission (Mailto) --- */
-    const contactForm = document.getElementById('paco-form');
+
+    /* =============================================
+       FORM SUBMISSION — Email + WhatsApp
+       ============================================= */
     const sendEmailBtn = document.getElementById('send-email');
     const sendWhatsappBtn = document.getElementById('send-whatsapp');
     
@@ -330,7 +607,10 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    /* --- Smooth Scrolling --- */
+
+    /* =============================================
+       SMOOTH SCROLLING
+       ============================================= */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -339,45 +619,46 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                const headerOffset = 90;
+                const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
                 window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                 
-                if (window.innerWidth <= 768 && navLinks) {
-                    navLinks.classList.remove('active');
-                    navLinks.style.display = 'none';
-                    menuBtn.children[0].style.transform = 'none';
-                    menuBtn.children[1].style.opacity = '1';
-                    menuBtn.children[2].style.transform = 'none';
+                // Close mobile menu after navigation
+                if (window.innerWidth <= 768) {
+                    closeMobileMenu();
                 }
             }
         });
     });
 
+
+    /* =============================================
+       SCROLL BEHAVIOR — Nav state
+       ============================================= */
+    let lastScrollY = window.scrollY;
+    
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.style.padding = '5px 0';
-            nav.style.backgroundColor = 'rgba(255, 252, 243, 0.95)';
+        const currentScrollY = window.scrollY;
+        
+        // Nav visual feedback on scroll
+        if (currentScrollY > 50) {
+            nav.classList.add('scrolled');
         } else {
-            nav.style.padding = '0';
-            nav.style.backgroundColor = 'rgba(255, 252, 243, 0.85)';
+            nav.classList.remove('scrolled');
         }
         
-        // Hide/Show Header on scroll for mobile
+        // Hide/Show nav on mobile scroll
         if (window.innerWidth <= 768) {
-            const currentScrollY = window.scrollY;
             if (currentScrollY > lastScrollY && currentScrollY > 150) {
-                // Scrolling down
                 nav.classList.add('nav-hidden');
             } else {
-                // Scrolling up
                 nav.classList.remove('nav-hidden');
             }
-            lastScrollY = currentScrollY;
         }
-    });
+        
+        lastScrollY = currentScrollY;
+    }, { passive: true });
 
-    let lastScrollY = window.scrollY;
 });
