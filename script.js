@@ -4,11 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
        PRODUCT DATA — Single source of truth
        ============================================= */
     const products = [
+        /* ── Coup de Cœur ─────────────────────────── */
         {
             id: 'poupee-bouquet',
             ref: 'PB001',
             title: 'La Poupée Bouquet 2-en-1',
             category: 'Coup de Cœur',
+            type: 'coup-de-coeur',
             description: 'Une création unique et magique qui se transforme d\'un magnifique bouquet de fleurs éternelles en une adorable poupée de chiffon. C\'est le cadeau idéal pour décorer une chambre et offrir un compagnon de jeu inoubliable.',
             images: [
                 'public/images/poupee-bouquet-2-en-1-bouquet.jpg.jpg',
@@ -16,104 +18,456 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             details: {
                 matiere: 'Coton & Velours doux',
-                dimensions: 'Environ 30cm',
+                dimensions: 'Environ 30 cm',
                 entretien: 'Lavage délicat à la main'
             },
             price: 49,
             priceLabel: '49 €'
         },
+
+        /* ── Sacs ──────────────────────────────────── */
         {
-            id: 'sac-franges',
-            ref: 'SA001',
-            title: 'Sac Franges & Lilas',
-            category: 'Accessoire Bohème',
-            description: 'Ce sac en crochet allie la pureté du blanc à l\'élégance du lilas. Ses franges généreuses lui donnent un mouvement gracieux, parfait pour une balade estivale ou une soirée bohème.',
-            images: ['public/images/sac-blanc-violet-franges.jpg.jpg'],
+            id: 'sac-rouge-noir',
+            ref: 'SAC 1',
+            title: 'Sac Rouge & Noir',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac structuré au contraste audacieux entre rouge vif et noir profond. Ses finitions crochetées et sa bandoulière en font un accessoire de caractère, idéal pour affirmer son style au quotidien.',
+            images: [
+                'public/images/sac-rouge-noir-01-devant.jpeg',
+                'public/images/sac-rouge-noir-02-derriere.jpeg',
+                'public/images/sac-rouge-noir-03-dessus-interieur.jpeg'
+            ],
             details: {
-                matiere: 'Coton crocheté',
-                entretien: 'Lavage délicat à la main'
-            },
-            price: 42,
-            priceLabel: '42 €'
-        },
-        {
-            id: 'peluche-lapin',
-            ref: 'LA001',
-            title: 'Lapinot Rose Poudré',
-            category: 'Douceur Enfant',
-            description: 'Un petit lapin au crochet d\'une douceur infinie. Avec ses longues oreilles et sa couleur rose poudré, il deviendra vite le meilleur ami des petits (et des grands).',
-            images: ['public/images/peluche-lapin-rose.jpg.jpg'],
-            details: {
-                matiere: 'Coton doux',
-                dimensions: 'Environ 22cm'
+                matiere: 'Polyester',
+                dimensions: 'L 30 cm × H 23 cm',
+                couleurs: 'Rouge et noir'
             },
             price: 28,
             priceLabel: '28 €'
         },
         {
-            id: 'sac-rayures',
-            ref: 'SA002',
-            title: 'Sac Rayures Pastel',
-            category: 'Mode Printanière',
-            description: 'Un sac spacieux et robuste aux rayures harmonieuses. Un mélange de lilas, crème et rose qui sent bon le printemps et les journées ensoleillées.',
-            images: ['public/images/sac-raye-violet-creme.jpg.jpg'],
+            id: 'sac-violet',
+            ref: 'SAC 2',
+            title: 'Sac Violet',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac aux teintes lilas et violettes, orné de motifs géométriques élégants. Sa bandoulière rose tressée et ses anses noires lui donnent un charme unique entre tradition et modernité.',
+            images: [
+                'public/images/sac-violet-01-devant.jpeg',
+                'public/images/sac-violet-02-profil.jpeg',
+                'public/images/sac-violet-03-devant-2.jpeg'
+            ],
             details: {
-                matiere: 'Coton crocheté'
+                matiere: 'Polyester',
+                dimensions: 'L 37 cm × H 33 cm',
+                couleurs: 'Violet / lilas'
             },
-            price: 38,
-            priceLabel: '38 €'
+            price: 30,
+            priceLabel: '30 €'
         },
         {
-            id: 'sac-geometrique',
-            ref: 'SA003',
-            title: 'Sac Géométrique Violet',
-            category: 'Contemporain',
-            description: 'Un design moderne aux motifs géométriques jouant sur les contrastes de violet et de crème. Idéal pour un look structuré et original.',
-            images: ['public/images/sac-geometrique-violet-creme.jpg.jpg'],
+            id: 'sac-bleu-rose',
+            ref: 'SAC 3',
+            title: 'Sac Bleu & Rose',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Spacieux et lumineux, ce sac bleu azur et rose poudré allie géométrie et douceur. Ses anses en bambou doré et son petit porte-clés peluche en font une pièce pleine de charme.',
+            images: [
+                'public/images/sac-bleu-rose-01-devant.jpeg',
+                'public/images/sac-bleu-rose-02-dos.jpeg',
+                'public/images/sac-bleu-rose-03-interieur.jpeg'
+            ],
             details: {
-                matiere: 'Coton crocheté'
+                matiere: 'Polyester',
+                dimensions: 'L 40 cm × H 35 cm',
+                couleurs: 'Bleu et rose'
             },
-            price: 36,
-            priceLabel: '36 €'
+            price: 30,
+            priceLabel: '30 €'
         },
         {
-            id: 'panier-douceur',
-            ref: 'PA001',
-            title: 'Panier Douceur',
-            category: 'Rangement Chic',
-            description: 'Un petit panier de rangement à la fois pratique et esthétique. Idéal pour organiser vos accessoires de beauté ou vos fils de coton avec une touche de couleur tendre.',
-            images: ['public/images/panier-creme-rose.jpg.jpg'],
+            id: 'sac-orange',
+            ref: 'SAC 4',
+            title: 'Sac Orange',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac au coloris chaud et ensoleillé, mêlant orange lumineux et noir. Son anse en bambou et sa structure géométrique en font un accessoire frais et original.',
+            images: [
+                'public/images/sac-orange-01.jpeg',
+                'public/images/sac-orange-02.jpeg',
+                'public/images/sac-orange-03.jpeg'
+            ],
             details: {
-                matiere: 'Coton crocheté'
+                matiere: 'Polyester',
+                dimensions: 'L 34 cm × H 30 cm',
+                couleurs: 'Orange'
             },
-            price: 22,
-            priceLabel: '22 €'
+            price: 30,
+            priceLabel: '30 €'
         },
         {
-            id: 'sac-passion',
-            ref: 'SA004',
-            title: 'Sac Ruban & Passion',
-            category: 'Édition Classique',
-            description: 'Le contraste classique du rouge et du blanc pour un sac qui ne passe pas inaperçu. Sa texture travaillée et ses finitions soignées en font un accessoire de caractère.',
-            images: ['public/images/sac-rouge-blanc-crochet.jpg.jpg'],
+            id: 'sac-rose',
+            ref: 'SAC 5',
+            title: 'Sac Rose',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac rose tendre et féminin, parfait pour les journées douces. Sa fermeture soignée et sa taille pratique en font un compagnon idéal pour vos sorties.',
+            images: [
+                'public/images/sac-rose-01-devant-ferme.jpeg',
+                'public/images/sac-rose-02-devant-ouvert.jpeg',
+                'public/images/sac-rose-03-dos-ferme.jpeg',
+                'public/images/sac-rose-04-dessus-interieur.jpeg'
+            ],
             details: {
-                matiere: 'Coton crocheté'
+                matiere: 'Polyester',
+                dimensions: 'L 29 cm × H 30 cm',
+                couleurs: 'Rose'
             },
-            price: 34,
-            priceLabel: '34 €'
+            price: 30,
+            priceLabel: '30 €'
         },
         {
-            id: 'panier-printemps',
-            ref: 'PA002',
-            title: 'Panier Printemps',
-            category: 'Féerie Florale',
-            description: 'Un panier fleuri qui apporte immédiatement de la gaieté. Ses nuances de rose et ses motifs délicats en font une pièce de décoration unique pour votre intérieur.',
-            images: ['public/images/panier-rose-multicolore.jpg.jpg'],
+            id: 'sac-rose-perle',
+            ref: 'SAC 6',
+            title: 'Sac Rose Perle',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac rose nacré à la forme originale, plus large en bas qu\'en haut. Sa silhouette douce et sa teinte perlée lui confèrent une élégance subtile et féminine.',
+            images: [
+                'public/images/sac-rose-perle-01-devant.jpeg',
+                'public/images/sac-rose-perle-02-devant-2.jpeg',
+                'public/images/sac-rose-perle-03-dessus-interieur.jpeg'
+            ],
             details: {
-                matiere: 'Coton crocheté'
+                matiere: 'Polyester',
+                dimensions: 'L bas 35 cm, L haut 22 cm × H 33 cm',
+                couleurs: 'Rose',
+                particularite: 'Plus large en bas qu\'en haut'
             },
-            price: 24,
-            priceLabel: '24 €'
+            price: 25,
+            priceLabel: '25 €'
+        },
+        {
+            id: 'sac-gris-rose',
+            ref: 'SAC 7',
+            title: 'Sac Gris & Rose',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac graphique aux rayures gris chiné et rose vif. Sa bandoulière lilas et sa fermeture à rabat en font un accessoire chic et moderne au look contemporain.',
+            images: [
+                'public/images/sac-gris-rose-01-devant-ferme.jpeg',
+                'public/images/sac-gris-rose-02-devant-ouvert.jpeg',
+                'public/images/sac-gris-rose-03-dos-ferme.jpeg',
+                'public/images/sac-gris-rose-04-dessus-interieur.jpeg'
+            ],
+            details: {
+                matiere: 'Polyester',
+                dimensions: 'L 30 cm × H 20 cm',
+                couleurs: 'Gris et rose'
+            },
+            price: 20,
+            priceLabel: '20 €'
+        },
+        {
+            id: 'sac-bleu',
+            ref: 'SAC 8',
+            title: 'Petit Sac Bleu',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un petit sac bleu compact et pratique, parfait pour l\'essentiel. Son format malin et ses finitions soignées en font un accessoire stylé pour les balades légères.',
+            images: [
+                'public/images/sac-bleu-01-devant-ferme.jpeg',
+                'public/images/sac-bleu-02-devant-ouvert.jpeg',
+                'public/images/sac-bleu-03-dos-ferme.jpeg',
+                'public/images/sac-bleu-04-dessus-interieur.jpeg'
+            ],
+            details: {
+                matiere: 'Polyester',
+                dimensions: 'L 26 cm × H 20 cm',
+                couleurs: 'Bleu',
+                particularite: 'Petit format'
+            },
+            price: 20,
+            priceLabel: '20 €'
+        },
+        {
+            id: 'sac-rouge-bleu-jaune',
+            ref: 'SAC 9',
+            title: 'Sac Rouge, Bleu & Jaune',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac haut en couleurs, mêlant rouge, bleu et jaune dans un patchwork joyeux. Sa forme évasée et sa construction robuste en font un accessoire unique et plein de vie.',
+            images: [
+                'public/images/sac-rouge-bleu-jaune-01-devant.jpeg',
+                'public/images/sac-rouge-bleu-jaune-02-dos.jpeg',
+                'public/images/sac-rouge-bleu-jaune-03-dessus-interieur.jpeg',
+                'public/images/sac-rouge-bleu-jaune-04-vue-trois-quarts.jpeg'
+            ],
+            details: {
+                matiere: 'Polyester',
+                dimensions: 'L bas 30 cm, L haut 25 cm × H 30 cm',
+                couleurs: 'Rouge, bleu et jaune',
+                particularite: 'Plus large en bas qu\'en haut'
+            },
+            price: 17,
+            priceLabel: '17 €'
+        },
+        {
+            id: 'sac-multicolore',
+            ref: 'SAC 10',
+            title: 'Petit Sac Multicolore',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un petit sac multicolore plein de peps, tissé en fil T-shirt. Ses couleurs vives et son petit format en font un accessoire de sortie amusant et original.',
+            images: [
+                'public/images/sac-multicolore-01-devant.jpeg',
+                'public/images/sac-multicolore-02-dos.jpeg',
+                'public/images/sac-multicolore-03-dessus-interieur.jpeg'
+            ],
+            details: {
+                matiere: 'Fil T-shirt',
+                dimensions: 'L 28 cm × H 15 cm',
+                couleurs: 'Multicolore (rose, bleu, blanc, noir, beige)',
+                particularite: 'Petit format'
+            },
+            price: 10,
+            priceLabel: '10 €'
+        },
+        {
+            id: 'sac-octogonal-multicolore',
+            ref: 'SAC 11',
+            title: 'Sac Octogonal Multicolore',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac à la forme octogonale originale, tissé en fil T-shirt multicolore. Sa silhouette géométrique unique et ses nuances harmonieuses en font une pièce de caractère.',
+            images: [
+                'public/images/sac-octogonal-multicolore-01-devant.jpeg',
+                'public/images/sac-octogonal-multicolore-02-dos.jpeg',
+                'public/images/sac-octogonal-multicolore-03-dessus-interieur.jpeg',
+                'public/images/sac-octogonal-multicolore-04-vue-trois-quarts.jpeg'
+            ],
+            details: {
+                matiere: 'Fil T-shirt',
+                dimensions: 'L 26 cm × H 30 cm',
+                couleurs: 'Noir, blanc, marron, beige, bleu clair, gris, rose',
+                particularite: 'Forme octogonale type panneau stop'
+            },
+            price: 15,
+            priceLabel: '15 €'
+        },
+        {
+            id: 'sac-bleu-rond',
+            ref: 'SAC 12',
+            title: 'Sac Rond Bleu',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac rond bleu bicolore agrémenté d\'un petit pompon, tissé en fil T-shirt. Sa forme arrondie et ses teintes bleutées en font un accessoire doux et élégant.',
+            images: [
+                'public/images/sac-bleu-rond-01-devant.jpeg',
+                'public/images/sac-bleu-rond-02-dos.jpeg',
+                'public/images/sac-bleu-rond-03-dessus-interieur.jpeg'
+            ],
+            details: {
+                matiere: 'Fil T-shirt',
+                dimensions: 'L 25 cm × H 30 cm',
+                couleurs: 'Bleu foncé et bleu clair',
+                particularite: 'Forme ronde, petit pompon'
+            },
+            price: 15,
+            priceLabel: '15 €'
+        },
+        {
+            id: 'sac-blanc-bleu-gris',
+            ref: 'SAC 13',
+            title: 'Sac Blanc, Bleu & Gris',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un sac aux teintes douces blanc, bleu et gris, tissé en fil T-shirt. Spacieux et léger, il convient parfaitement aux journées décontractées.',
+            images: [
+                'public/images/sac-blanc-bleu-gris-01-devant.jpeg',
+                'public/images/sac-blanc-bleu-gris-02-dos.jpeg',
+                'public/images/sac-blanc-bleu-gris-03-dessus-interieur.jpeg'
+            ],
+            details: {
+                matiere: 'Fil T-shirt',
+                dimensions: 'L 45 cm × H 24 cm',
+                couleurs: 'Blanc, bleu, gris'
+            },
+            price: 12,
+            priceLabel: '12 €'
+        },
+        {
+            id: 'sac-beige-ecru',
+            ref: 'SAC 14',
+            title: 'Sac Beige Écru',
+            category: 'Sac Artisanal',
+            type: 'sac',
+            description: 'Un grand sac beige écru au style naturel et raffiné. Ses anses en bois et sa chaîne tressée lui donnent une touche bohème chic, accompagné de ses breloques décoratives.',
+            images: [
+                'public/images/sac-beige-ecru-01-devant.jpeg',
+                'public/images/sac-beige-ecru-02-dos.jpeg',
+                'public/images/sac-beige-ecru-03-dessus-interieur.jpeg'
+            ],
+            details: {
+                matiere: 'Polyester',
+                dimensions: 'L 45 cm × H 35 cm',
+                couleurs: 'Beige / écru'
+            },
+            price: 35,
+            priceLabel: '35 €'
+        },
+
+        /* ── Doudous & Peluches ────────────────────── */
+        {
+            id: 'doudou-lapin-bleu',
+            ref: 'DOUDOU 1',
+            title: 'Doudou Lapin Bleu',
+            category: 'Doudou & Peluche',
+            type: 'doudou',
+            description: 'Un adorable lapin bleu royal et blanc, crocheté en fil de velours. Avec ses grandes oreilles tombantes et ses yeux expressifs, il deviendra vite le meilleur ami des tout-petits.',
+            images: [
+                'public/images/doudou-lapin-bleu-01-assis-profil.jpeg',
+                'public/images/doudou-lapin-bleu-02-assis-face.jpeg',
+                'public/images/doudou-lapin-bleu-03-allonge-face.jpeg'
+            ],
+            details: {
+                matiere: 'Fil de velours',
+                hauteur: '32 cm',
+                couleurs: 'Bleu foncé et blanc'
+            },
+            price: 30,
+            priceLabel: '30 €'
+        },
+        {
+            id: 'doudou-lapin-rose',
+            ref: 'DOUDOU 2',
+            title: 'Doudou Lapin Rose',
+            category: 'Doudou & Peluche',
+            type: 'doudou',
+            description: 'Un doudou plat en forme de lapin, tout en douceur rose, blanc et noir. Idéal pour accompagner les premiers câlins de bébé avec sa texture coton toute douce.',
+            images: [
+                'public/images/doudou-lapin-rose-01-plie.jpeg',
+                'public/images/doudou-lapin-rose-02-deplie.jpeg'
+            ],
+            details: {
+                matiere: 'Coton',
+                couleurs: 'Rose, blanc, noir'
+            },
+            price: 25,
+            priceLabel: '25 €'
+        },
+        {
+            id: 'doudou-etoile-bleue',
+            ref: 'DOUDOU 3',
+            title: 'Doudou Étoile Bleue',
+            category: 'Doudou & Peluche',
+            type: 'doudou',
+            description: 'Un doudou plat en forme d\'étoile, mêlant bleu et blanc dans un esprit tendre et apaisant. Son format plat est parfait pour les petites mains.',
+            images: [
+                'public/images/doudou-etoile-bleue-01-plie.jpeg',
+                'public/images/doudou-etoile-bleue-02-deplie.jpeg'
+            ],
+            details: {
+                matiere: 'Coton',
+                couleurs: 'Bleu, bleu clair, blanc'
+            },
+            price: 25,
+            priceLabel: '25 €'
+        },
+        {
+            id: 'peluche-tortue-rose',
+            ref: 'DOUDOU 4',
+            title: 'Peluche Tortue Rose',
+            category: 'Doudou & Peluche',
+            type: 'doudou',
+            description: 'Une petite tortue rose pâle et écru, crochetée en fil chenille ultra doux. Sa carapace toute ronde et sa bouille attendrissante en font un compagnon irrésistible.',
+            images: [
+                'public/images/peluche-tortue-rose-01-face.jpeg',
+                'public/images/peluche-tortue-rose-02-dos.jpeg'
+            ],
+            details: {
+                matiere: 'Fil chenille',
+                hauteur: '30 cm',
+                couleurs: 'Rose pâle et beige / écru'
+            },
+            price: 25,
+            priceLabel: '25 €'
+        },
+        {
+            id: 'peluche-pieuvre-rose',
+            ref: 'DOUDOU 5',
+            title: 'Peluche Pieuvre Rose',
+            category: 'Doudou & Peluche',
+            type: 'doudou',
+            description: 'Une adorable petite pieuvre rose pâle crochetée en fil chenille. Compacte et toute douce, elle est parfaite pour les mains de bébé et les câlins de dernière minute.',
+            images: [
+                'public/images/peluche-pieuvre-rose-01-face.jpeg',
+                'public/images/peluche-pieuvre-rose-02-dos.jpeg'
+            ],
+            details: {
+                matiere: 'Fil chenille',
+                hauteur: '10 cm',
+                couleurs: 'Rose pâle'
+            },
+            price: 25,
+            priceLabel: '25 €'
+        },
+        {
+            id: 'doudou-lapin-marron',
+            ref: 'DOUDOU 6',
+            title: 'Doudou Lapin Marron',
+            category: 'Doudou & Peluche',
+            type: 'doudou',
+            description: 'Un petit doudou plat en forme de lapin, tout en coton marron naturel. Simple et doux, il est le cadeau de naissance idéal.',
+            images: [
+                'public/images/doudou-lapin-marron-01-face.jpeg',
+                'public/images/doudou-lapin-marron-02-dos.jpeg'
+            ],
+            details: {
+                matiere: 'Coton',
+                couleurs: 'Marron'
+            },
+            price: 6,
+            priceLabel: '6 €'
+        },
+        {
+            id: 'doudou-lapin-vert',
+            ref: 'DOUDOU 7',
+            title: 'Doudou Lapin Vert',
+            category: 'Doudou & Peluche',
+            type: 'doudou',
+            description: 'Un doudou plat en forme de lapin aux tons naturels de vert sauge et marron. Sa douceur et ses teintes apaisantes en font un compagnon parfait pour les siestes.',
+            images: [
+                'public/images/doudou-lapin-vert-01-face.jpeg',
+                'public/images/doudou-lapin-vert-02-dos.jpeg'
+            ],
+            details: {
+                matiere: 'Coton',
+                couleurs: 'Vert sauge et marron'
+            },
+            price: 6,
+            priceLabel: '6 €'
+        },
+        {
+            id: 'peluche-nounours-marron',
+            ref: 'DOUDOU 8',
+            title: 'Peluche Nounours Marron',
+            category: 'Doudou & Peluche',
+            type: 'doudou',
+            description: 'Un grand nounours marron et blanc crocheté en coton, portant une adorable écharpe blanche. Sa taille généreuse et son expression tendre en font le roi des câlins.',
+            images: [
+                'public/images/peluche-nounours-marron-01-face.jpeg',
+                'public/images/peluche-nounours-marron-02-dos.jpeg'
+            ],
+            details: {
+                matiere: 'Coton',
+                hauteur: '60 cm',
+                couleurs: 'Marron et blanc / écru',
+                particularite: 'Écharpe blanche'
+            },
+            price: 18,
+            priceLabel: '18 €'
         }
     ];
 
@@ -472,6 +826,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const detailsMap = {
             matiere: 'Matière',
             dimensions: 'Dimensions',
+            hauteur: 'Hauteur',
+            couleurs: 'Couleurs',
+            particularite: 'Particularité',
             entretien: 'Entretien'
         };
 
