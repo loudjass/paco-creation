@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'poupee-bouquet',
             ref: 'PB001',
-            title: 'La Poupée Bouquet 2-en-1',
+            title: 'Poupée Bouquet 2-en-1',
             category: 'Coup de Cœur',
             type: 'coup-de-coeur',
             description: 'Une création unique et magique qui se transforme d\'un magnifique bouquet de fleurs éternelles en une adorable poupée de chiffon. C\'est le cadeau idéal pour décorer une chambre et offrir un compagnon de jeu inoubliable.',
@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 'public/images/poupee-bouquet-2-en-1-pupee.jpg.jpg'
             ],
             details: {
-                matiere: 'Coton & Velours doux',
-                dimensions: 'Environ 30 cm',
+                matiere: 'Coton',
+                hauteur: '80 cm',
                 entretien: 'Lavage délicat à la main'
             },
-            price: 49,
-            priceLabel: '49 €'
+            price: 180,
+            priceLabel: '180 €'
         },
 
         /* ── Sacs ──────────────────────────────────── */
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-rouge-noir',
             ref: 'SAC 1',
             title: 'Sac Rouge & Noir',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac structuré au contraste audacieux entre rouge vif et noir profond. Ses finitions crochetées et sa bandoulière en font un accessoire de caractère, idéal pour affirmer son style au quotidien.',
             images: [
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-violet',
             ref: 'SAC 2',
             title: 'Sac Violet',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac aux teintes lilas et violettes, orné de motifs géométriques élégants. Sa bandoulière rose tressée et ses anses noires lui donnent un charme unique entre tradition et modernité.',
             images: [
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-bleu-rose',
             ref: 'SAC 3',
             title: 'Sac Bleu & Rose',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Spacieux et lumineux, ce sac bleu azur et rose poudré allie géométrie et douceur. Ses anses en bambou doré et son petit porte-clés peluche en font une pièce pleine de charme.',
             images: [
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-orange',
             ref: 'SAC 4',
             title: 'Sac Orange',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac au coloris chaud et ensoleillé, mêlant orange lumineux et noir. Son anse en bambou et sa structure géométrique en font un accessoire frais et original.',
             images: [
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-rose',
             ref: 'SAC 5',
             title: 'Sac Rose',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac rose tendre et féminin, parfait pour les journées douces. Sa fermeture soignée et sa taille pratique en font un compagnon idéal pour vos sorties.',
             images: [
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-rose-perle',
             ref: 'SAC 6',
             title: 'Sac Rose Perle',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac rose nacré à la forme originale, plus large en bas qu\'en haut. Sa silhouette douce et sa teinte perlée lui confèrent une élégance subtile et féminine.',
             images: [
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-gris-rose',
             ref: 'SAC 7',
             title: 'Sac Gris & Rose',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac graphique aux rayures gris chiné et rose vif. Sa bandoulière lilas et sa fermeture à rabat en font un accessoire chic et moderne au look contemporain.',
             images: [
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-bleu',
             ref: 'SAC 8',
             title: 'Petit Sac Bleu',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un petit sac bleu compact et pratique, parfait pour l\'essentiel. Son format malin et ses finitions soignées en font un accessoire stylé pour les balades légères.',
             images: [
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-rouge-bleu-jaune',
             ref: 'SAC 9',
             title: 'Sac Rouge, Bleu & Jaune',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac haut en couleurs, mêlant rouge, bleu et jaune dans un patchwork joyeux. Sa forme évasée et sa construction robuste en font un accessoire unique et plein de vie.',
             images: [
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-multicolore',
             ref: 'SAC 10',
             title: 'Petit Sac Multicolore',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un petit sac multicolore plein de peps, tissé en fil T-shirt. Ses couleurs vives et son petit format en font un accessoire de sortie amusant et original.',
             images: [
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-octogonal-multicolore',
             ref: 'SAC 11',
             title: 'Sac Octogonal Multicolore',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac à la forme octogonale originale, tissé en fil T-shirt multicolore. Sa silhouette géométrique unique et ses nuances harmonieuses en font une pièce de caractère.',
             images: [
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-bleu-rond',
             ref: 'SAC 12',
             title: 'Sac Rond Bleu',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac rond bleu bicolore agrémenté d\'un petit pompon, tissé en fil T-shirt. Sa forme arrondie et ses teintes bleutées en font un accessoire doux et élégant.',
             images: [
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-blanc-bleu-gris',
             ref: 'SAC 13',
             title: 'Sac Blanc, Bleu & Gris',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un sac aux teintes douces blanc, bleu et gris, tissé en fil T-shirt. Spacieux et léger, il convient parfaitement aux journées décontractées.',
             images: [
@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'sac-beige-ecru',
             ref: 'SAC 14',
             title: 'Sac Beige Écru',
-            category: 'Sac Artisanal',
+            category: 'Sacs à Main',
             type: 'sac',
             description: 'Un grand sac beige écru au style naturel et raffiné. Ses anses en bois et sa chaîne tressée lui donnent une touche bohème chic, accompagné de ses breloques décoratives.',
             images: [
@@ -323,12 +323,12 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'doudou-lapin-bleu',
             ref: 'DOUDOU 1',
             title: 'Doudou Lapin Bleu',
-            category: 'Doudou & Peluche',
+            category: 'Douceurs & Peluches',
             type: 'doudou',
             description: 'Un adorable lapin bleu royal et blanc, crocheté en fil de velours. Avec ses grandes oreilles tombantes et ses yeux expressifs, il deviendra vite le meilleur ami des tout-petits.',
             images: [
-                'public/images/doudou-lapin-bleu-01-assis-profil.jpeg',
                 'public/images/doudou-lapin-bleu-02-assis-face.jpeg',
+                'public/images/doudou-lapin-bleu-01-assis-profil.jpeg',
                 'public/images/doudou-lapin-bleu-03-allonge-face.jpeg'
             ],
             details: {
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'doudou-lapin-rose',
             ref: 'DOUDOU 2',
             title: 'Doudou Lapin Rose',
-            category: 'Doudou & Peluche',
+            category: 'Douceurs & Peluches',
             type: 'doudou',
             description: 'Un doudou plat en forme de lapin, tout en douceur rose, blanc et noir. Idéal pour accompagner les premiers câlins de bébé avec sa texture coton toute douce.',
             images: [
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'doudou-etoile-bleue',
             ref: 'DOUDOU 3',
             title: 'Doudou Étoile Bleue',
-            category: 'Doudou & Peluche',
+            category: 'Douceurs & Peluches',
             type: 'doudou',
             description: 'Un doudou plat en forme d\'étoile, mêlant bleu et blanc dans un esprit tendre et apaisant. Son format plat est parfait pour les petites mains.',
             images: [
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'peluche-tortue-rose',
             ref: 'DOUDOU 4',
             title: 'Peluche Tortue Rose',
-            category: 'Doudou & Peluche',
+            category: 'Douceurs & Peluches',
             type: 'doudou',
             description: 'Une petite tortue rose pâle et écru, crochetée en fil chenille ultra doux. Sa carapace toute ronde et sa bouille attendrissante en font un compagnon irrésistible.',
             images: [
@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'peluche-pieuvre-rose',
             ref: 'DOUDOU 5',
             title: 'Peluche Pieuvre Rose',
-            category: 'Doudou & Peluche',
+            category: 'Douceurs & Peluches',
             type: 'doudou',
             description: 'Une adorable petite pieuvre rose pâle crochetée en fil chenille. Compacte et toute douce, elle est parfaite pour les mains de bébé et les câlins de dernière minute.',
             images: [
@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'doudou-lapin-marron',
             ref: 'DOUDOU 6',
             title: 'Doudou Lapin Marron',
-            category: 'Doudou & Peluche',
+            category: 'Douceurs & Peluches',
             type: 'doudou',
             description: 'Un petit doudou plat en forme de lapin, tout en coton marron naturel. Simple et doux, il est le cadeau de naissance idéal.',
             images: [
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'doudou-lapin-vert',
             ref: 'DOUDOU 7',
             title: 'Doudou Lapin Vert',
-            category: 'Doudou & Peluche',
+            category: 'Douceurs & Peluches',
             type: 'doudou',
             description: 'Un doudou plat en forme de lapin aux tons naturels de vert sauge et marron. Sa douceur et ses teintes apaisantes en font un compagnon parfait pour les siestes.',
             images: [
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 'peluche-nounours-marron',
             ref: 'DOUDOU 8',
             title: 'Peluche Nounours Marron',
-            category: 'Doudou & Peluche',
+            category: 'Douceurs & Peluches',
             type: 'doudou',
             description: 'Un grand nounours marron et blanc crocheté en coton, portant une adorable écharpe blanche. Sa taille généreuse et son expression tendre en font le roi des câlins.',
             images: [
@@ -673,15 +673,33 @@ document.addEventListener('DOMContentLoaded', () => {
             const cart = getCart();
             if (cart.length === 0) return;
 
-            let msg = 'Bonjour ! Je souhaite commander les créations suivantes :\n\n';
+            let msg = 'Bonjour, je souhaite commander les créations suivantes :\n\n';
+            const bags = [];
+            const doudous = [];
+
             cart.forEach(item => {
                 const product = products.find(p => p.id === item.id);
                 if (product) {
-                    msg += `• ${product.title} (Réf: ${product.ref}) × ${item.qty} — ${product.price * item.qty} €\n`;
+                    const line = `- ${product.title} — ${product.price * item.qty} €${item.qty > 1 ? ` (x${item.qty})` : ''}`;
+                    if (product.type === 'sac') {
+                        bags.push(line);
+                    } else {
+                        doudous.push(line);
+                    }
                 }
             });
-            msg += `\nTotal : ${getCartTotal()} €\n\nMerci !`;
+
+            if (bags.length > 0) {
+                msg += '[SACS / SACS À MAIN]\n' + bags.join('\n') + '\n\n';
+            }
+            if (doudous.length > 0) {
+                msg += '[DOUDOUS / PELUCHES]\n' + doudous.join('\n') + '\n\n';
+            }
+
+            msg += `Total : ${getCartTotal()} €\n\nMerci.`;
             window.open(`https://wa.me/33607877159?text=${encodeURIComponent(msg)}`, '_blank');
+            saveCart([]);
+            closeCartDrawer();
         });
     }
 
@@ -690,13 +708,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* =============================================
+       INTERSECTION OBSERVER — Scroll Animations
+       ============================================= */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    function initReveal() {
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+    }
+
+    /* =============================================
        RENDER GALLERY — Product cards with Add-to-Cart
        ============================================= */
     const productGrid = document.getElementById('product-grid');
-    if (productGrid) {
-        products.forEach((product) => {
-            if (product.id === 'poupee-bouquet') return;
-            
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const sortSelect = document.getElementById('shop-sort-select');
+
+    function renderGallery(filter = 'all', sort = 'default') {
+        if (!productGrid) return;
+        productGrid.innerHTML = '';
+        
+        let filtered = products.filter(p => p.id !== 'poupee-bouquet');
+        
+        if (filter !== 'all') {
+            filtered = filtered.filter(p => p.type === filter);
+        }
+
+        if (sort === 'price-asc') {
+            filtered.sort((a, b) => a.price - b.price);
+        } else if (sort === 'price-desc') {
+            filtered.sort((a, b) => b.price - a.price);
+        } else if (sort === 'default') {
+            // Default: Sacs first, then doudous (already matches the base array order)
+            // Restore original order by sorting based on the index in the original array
+            filtered.sort((a, b) => products.indexOf(a) - products.indexOf(b));
+        }
+
+        filtered.forEach(product => {
             const card = document.createElement('div');
             card.className = 'card reveal';
             card.innerHTML = `
@@ -717,11 +775,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // Click card image → open modal
             card.querySelector('.card-image').addEventListener('click', () => openModal(product));
             card.querySelector('.card-title').addEventListener('click', () => openModal(product));
-
-            // Add to cart button
             card.querySelector('.add-to-cart-btn').addEventListener('click', (e) => {
                 e.stopPropagation();
                 addToCart(product.id);
@@ -729,6 +784,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
             productGrid.appendChild(card);
         });
+        
+        // Re-initialize intersection observers for new items
+        initReveal();
+    }
+
+    if (productGrid) {
+        renderGallery();
+
+        if (filterBtns) {
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderGallery(btn.dataset.filter, sortSelect ? sortSelect.value : 'default');
+                });
+            });
+        }
+
+        if (sortSelect) {
+            sortSelect.addEventListener('change', (e) => {
+                const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+                renderGallery(activeFilter, e.target.value);
+            });
+        }
     }
 
 
@@ -872,28 +951,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cartDrawer && cartDrawer.classList.contains('open')) closeCartDrawer();
         }
     });
-
-
-    /* =============================================
-       INTERSECTION OBSERVER — Scroll Animations
-       ============================================= */
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -40px 0px'
-    });
-
-    function initReveal() {
-        document.querySelectorAll('.reveal').forEach(el => {
-            revealObserver.observe(el);
-        });
-    }
-    initReveal();
 
 
     /* =============================================
