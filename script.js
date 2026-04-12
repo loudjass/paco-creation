@@ -683,7 +683,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const line = `- ${product.title} — ${product.price * item.qty} €${item.qty > 1 ? ` (x${item.qty})` : ''}`;
                     if (product.type === 'sac') {
                         bags.push(line);
+                    } else if (product.type === 'doudou' || product.type === 'coup-de-coeur') {
+                        doudous.push(line);
                     } else {
+                        // fallback pour tout autre type
                         doudous.push(line);
                     }
                 }
