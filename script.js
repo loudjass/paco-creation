@@ -693,10 +693,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (bags.length > 0) {
-                msg += '[SACS / SACS À MAIN]\n' + bags.join('\n') + '\n\n';
+                msg += '*[SACS / SACS À MAIN]*\n' + bags.join('\n') + '\n\n';
             }
             if (doudous.length > 0) {
-                msg += '[DOUDOUS / PELUCHES]\n' + doudous.join('\n') + '\n\n';
+                msg += '*[DOUDOUS / PELUCHES]*\n' + doudous.join('\n') + '\n\n';
             }
 
             msg += `Total : ${getCartTotal()} €\n\nMerci.`;

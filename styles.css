@@ -73,8 +73,8 @@ section { padding:var(--section-padding) 0; }
 }
 .filter-btn {
   background: transparent; border: none; padding: 0 0 6px; position: relative;
-  color: var(--color-text); font-family: var(--font-serif); font-size: 1.25rem;
-  letter-spacing: 0.5px; font-style: italic; cursor: pointer; transition: color 0.4s ease;
+  color: var(--color-text-light); font-family: var(--font-serif); font-size: 1.25rem;
+  letter-spacing: 0.5px; font-style: italic; cursor: pointer; transition: all 0.4s ease;
 }
 .filter-btn::after {
   content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 1px;
