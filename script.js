@@ -497,8 +497,8 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'doudou',
             description: 'Un majestueux dragon terriblement doux, crocheté dans de vibrantes nuances de braise incandescente en fil chenille. Avec sa crinière et ses détails soignés, c\'est le compagnon fantastique parfait pour rêver.',
             images: [
-                'public/images/peluche-dragon-braise-01-profil.jpeg',
                 'public/images/peluche-dragon-braise-03-face.jpeg',
+                'public/images/peluche-dragon-braise-01-profil.jpeg',
                 'public/images/peluche-dragon-braise-02-profil.jpeg'
             ],
             details: {
