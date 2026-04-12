@@ -15,7 +15,8 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600;1,700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script src="script.js?v=2" defer></script>
 </head>
 
 <body>
@@ -170,16 +171,17 @@
       </div>
       <div class="shop-controls reveal">
         <div class="shop-filters" id="shop-filters">
-          <button class="filter-btn active" data-filter="all">Toutes</button>
-          <button class="filter-btn" data-filter="sac">Sacs à Main</button>
+          <button class="filter-btn active" data-filter="all">Toutes nos pièces</button>
+          <span class="filter-separator"></span>
+          <button class="filter-btn" data-filter="sac">Sacs à main</button>
+          <span class="filter-separator"></span>
           <button class="filter-btn" data-filter="doudou">Douceurs & Peluches</button>
         </div>
-        <div class="shop-sort">
-          <select id="shop-sort-select" aria-label="Trier les créations">
-            <option value="default">Trier par type</option>
-            <option value="price-asc">Prix : Croissant</option>
-            <option value="price-desc">Prix : Décroissant</option>
-          </select>
+        <div class="shop-sort" id="shop-sort">
+          <span class="sort-label">Trier par :</span>
+          <span class="sort-option active" data-sort="default">Nouveautés</span>
+          <span class="sort-option" data-sort="price-asc">Prix croissant</span>
+          <span class="sort-option" data-sort="price-desc">Prix décroissant</span>
         </div>
       </div>
       <div class="gallery-grid" id="product-grid">
@@ -341,8 +343,6 @@
       </div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 
 </html>

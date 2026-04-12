@@ -383,8 +383,8 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'doudou',
             description: 'Une petite tortue rose pâle et écru, crochetée en fil chenille ultra doux. Sa carapace toute ronde et sa bouille attendrissante en font un compagnon irrésistible.',
             images: [
-                'public/images/peluche-tortue-rose-01-face.jpeg',
-                'public/images/peluche-tortue-rose-02-dos.jpeg'
+                'public/images/peluche-tortue-rose-02-dos.jpeg',
+                'public/images/peluche-tortue-rose-01-face.jpeg'
             ],
             details: {
                 matiere: 'Fil chenille',
@@ -732,7 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ============================================= */
     const productGrid = document.getElementById('product-grid');
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const sortSelect = document.getElementById('shop-sort-select');
+    const sortOptions = document.querySelectorAll('.sort-option');
 
     function renderGallery(filter = 'all', sort = 'default') {
         if (!productGrid) return;
@@ -749,12 +749,27 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (sort === 'price-desc') {
             filtered.sort((a, b) => b.price - a.price);
         } else if (sort === 'default') {
-            // Default: Sacs first, then doudous (already matches the base array order)
-            // Restore original order by sorting based on the index in the original array
             filtered.sort((a, b) => products.indexOf(a) - products.indexOf(b));
         }
 
+        let currentType = '';
+
         filtered.forEach(product => {
+            // Inject visual divider if displaying all and in default order
+            if (filter === 'all' && sort === 'default') {
+                if (currentType !== product.type) {
+                    currentType = product.type;
+                    const divider = document.createElement('div');
+                    divider.className = 'grid-divider reveal';
+                    divider.innerHTML = `
+                        <span class="divider-line"></span>
+                        <h3 class="divider-title">${product.type === 'sac' ? 'Sacs à main' : 'Douceurs & Peluches'}</h3>
+                        <span class="divider-line"></span>
+                    `;
+                    productGrid.appendChild(divider);
+                }
+            }
+
             const card = document.createElement('div');
             card.className = 'card reveal';
             card.innerHTML = `
@@ -797,15 +812,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.addEventListener('click', () => {
                     filterBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    renderGallery(btn.dataset.filter, sortSelect ? sortSelect.value : 'default');
+                    const activeSort = document.querySelector('.sort-option.active')?.dataset.sort || 'default';
+                    renderGallery(btn.dataset.filter, activeSort);
                 });
             });
         }
 
-        if (sortSelect) {
-            sortSelect.addEventListener('change', (e) => {
-                const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
-                renderGallery(activeFilter, e.target.value);
+        if (sortOptions) {
+            sortOptions.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    sortOptions.forEach(o => o.classList.remove('active'));
+                    opt.classList.add('active');
+                    const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+                    renderGallery(activeFilter, opt.dataset.sort);
+                });
             });
         }
     }
