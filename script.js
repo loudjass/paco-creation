@@ -468,6 +468,45 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             price: 18,
             priceLabel: '18 €'
+        },
+        {
+            id: 'peluche-petit-groot',
+            ref: 'DOUDOU 9',
+            title: 'Petit Groot',
+            category: 'Douceurs & Peluches',
+            type: 'doudou',
+            description: 'Une petite peluche irrésistible à l\'effigie de Groot, crochetée en fil chenille pour une douceur infinie. Un compagnon tendre et réconfortant qui émerveillera petits et grands.',
+            images: [
+                'public/images/peluche-petit-groot-01-face.jpeg',
+                'public/images/peluche-petit-groot-03-face-2.jpeg',
+                'public/images/peluche-petit-groot-02-dos.jpeg'
+            ],
+            details: {
+                matiere: 'Fil chenille',
+                hauteur: '27 cm',
+                dimensions: 'Largeur 17 cm (du bras gauche au bras droit)'
+            },
+            price: 25,
+            priceLabel: '25 €'
+        },
+        {
+            id: 'peluche-dragon-braise',
+            ref: 'DOUDOU 10',
+            title: 'Dragon Braise',
+            category: 'Douceurs & Peluches',
+            type: 'doudou',
+            description: 'Un majestueux dragon terriblement doux, crocheté dans de vibrantes nuances de braise incandescente en fil chenille. Avec sa crinière et ses détails soignés, c\'est le compagnon fantastique parfait pour rêver.',
+            images: [
+                'public/images/peluche-dragon-braise-01-profil.jpeg',
+                'public/images/peluche-dragon-braise-03-face.jpeg',
+                'public/images/peluche-dragon-braise-02-profil.jpeg'
+            ],
+            details: {
+                matiere: 'Fil chenille',
+                dimensions: 'Longueur 75 cm (de la queue au nez) × Largeur 34 cm (de patte à patte)'
+            },
+            price: 50,
+            priceLabel: '50 €'
         }
     ];
 
