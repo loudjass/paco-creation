@@ -484,7 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
             details: {
                 matiere: 'Fil chenille',
                 hauteur: '27 cm',
-                dimensions: 'Largeur 17 cm (du bras gauche au bras droit)'
+                largeur: '17 cm (du bras gauche au bras droit)'
             },
             price: 25,
             priceLabel: '25 €'
@@ -503,7 +503,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             details: {
                 matiere: 'Fil chenille',
-                dimensions: 'Longueur 75 cm (de la queue au nez) × Largeur 34 cm (de patte à patte)'
+                longueur: '75 cm (de la queue au bout du nez)',
+                largeur: '34 cm (de la patte gauche à la patte droite)'
             },
             price: 50,
             priceLabel: '50 €'
@@ -987,7 +988,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const detailsMap = {
             matiere: 'Matière',
             dimensions: 'Dimensions',
+            longueur: 'Longueur',
             hauteur: 'Hauteur',
+            largeur: 'Largeur',
             couleurs: 'Couleurs',
             particularite: 'Particularité',
             entretien: 'Entretien'
