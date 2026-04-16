@@ -515,14 +515,14 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Lapin Rose Habillé',
             category: 'Douceurs & Peluches',
             type: 'doudou',
-            description: 'Une coquette petite lapine rose, vêtue de son adorable robe chic. Crochetée à la main en fil T-shirt, elle allie un maintien structuré à une douceur réconfortante. Le compagnon tendre et élégant par excellence.',
+            description: 'Une coquette petite lapine rose, vêtue de son adorable robe chic. Crochetée à la main en fil chenille, elle allie un maintien structuré à une douceur réconfortante. Le compagnon tendre et élégant par excellence.',
             images: [
                 'public/images/lapin-rose-habille-01-face.jpeg',
                 'public/images/lapin-rose-habille-02-profil.jpeg',
                 'public/images/lapin-rose-habille-03-dos.jpeg'
             ],
             details: {
-                matiere: 'Fil T-shirt',
+                matiere: 'Fil chenille',
                 hauteur: '37 cm',
                 largeur: '25 cm (du bras gauche au bras droit)'
             },
